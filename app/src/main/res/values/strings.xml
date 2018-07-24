@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CommunicationApp</string>
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="core_accept">Aceptar</string>
+    <string name="core_cancel">Cancelar</string>
+    <string name="core_save">Guardar</string>
+
+
+    <string name="main_read_phone_state_permission_title">Acceso a número celular</string>
+    <string name="main_read_phone_state_permission_message">Este permiso se solicita, ya que es la base principal para construir su listado de contactos. Con su número celular podemos identificar cuáles usuarios inscritos en la plataforma son sus contactos</string>
+    <string name="title_activity_register">RegisterActivity</string>
+</resources>
