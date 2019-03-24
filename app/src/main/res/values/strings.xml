@@ -1,12 +1,86 @@
 <resources>
+    <!-- Activity titles Messages -->
     <string name="app_name">CommunicationApp</string>
     <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_manage_alarm">ManageAlarmActivity</string>
+    <string name="title_activity_lan_preference">LanPreferenceActivity</string>
+    <string name="title_activity_talk">TalkActivity</string>
+    <string name="title_activity_talk_text">TalkTextActivity</string>
+
+    <!-- Core Messages -->
     <string name="core_accept">Aceptar</string>
+    <string name="core_title">Título</string>
+    <string name="core_preferences">Preferencias</string>
+    <string name="core_message">Mensaje</string>
     <string name="core_cancel">Cancelar</string>
     <string name="core_save">Guardar</string>
+    <string name="core_error_response">Error, no fue posible realizar la operación</string>
+    <string name="core_success_response">La operación se realizó correctamente</string>
+    <string name="core_want_regiser">Quiero Registrarme</string>
+    <string name="core_want_register_me">Registrarme</string>
+    <string name="core_mobile_number">Número celular</string>
+    <string name="core_name">Nombre</string>
+    <string name="core_text_no_empty">No puede estar vacío</string>
+    <string name="core_incomplete_mobile_number">Número celular incompleto</string>
+    <string name="core_image_select">Seleccione una imagen</string>
+    <string name="core_last_message">Último mensaje</string>
+    <string name="core_first">Primero</string>
+    <string name="core_second">Segundo</string>
+    <string name="core_third">Tercero</string>
+    <string name="core_fourth">Cuarto</string>
+    <string name="core_short_monday">Lu</string>
+    <string name="core_short_tuesday">Ma</string>
+    <string name="core_short_wednesday">Mi</string>
+    <string name="core_short_thursday">Ju</string>
+    <string name="core_short_friday">Vi</string>
+    <string name="core_short_saturday">Sa</string>
+    <string name="core_short_sunday">Do</string>
+    <string name="core_customize">Personalizar</string>
+    <string name="core_specific_date">Fecha específica</string>
+    <string name="core_repetitive">Repetitivo</string>
+    <string name="core_event">Recordatorio</string>
+    <string name="core_register">Registro</string>
 
-
+    <!-- Main View Messages -->
     <string name="main_read_phone_state_permission_title">Acceso a número celular</string>
     <string name="main_read_phone_state_permission_message">Este permiso se solicita, ya que es la base principal para construir su listado de contactos. Con su número celular podemos identificar cuáles usuarios inscritos en la plataforma son sus contactos</string>
-    <string name="title_activity_register">RegisterActivity</string>
+
+    <string name="main_write_external_stoage_permission_title">Manejo de archivos</string>
+    <string name="main_write_external_stoage_permission_message">Permite almacenar, enviar y recibir mensajes de audio y video</string>
+
+    <!-- Register View Messages -->
+    <string name="register_operation_fail">No fue posible registrar el usuario. Intente nuevamente</string>
+
+    <!-- Lan Preference View Messages -->
+    <string name="lan_pref_empty_option_out">No hay opciones de salida habilitadas</string>
+    <string name="lan_pref_option_out_same_order">Hay opciones con el mismo orden de prioridad</string>
+    <string name="lan_pref_original_resources">Recursos originales</string>
+
+    <!--Message-->
+    <string name="message_text_empty">Verifica, al parecer no has escrito tu mensaje</string>
+
+    <!--Contact-->
+    <string name="contact_my_list">Mis contáctos</string>
+
+    <!--Event-->
+    <string name="event_select_event_type">Seleccione el tipo de evento</string>
+    <string name="event_frequency_hour">Cada hora</string>
+    <string name="event_frequency_day">Todos los días</string>
+    <string name="event_frequency_specific_days">Dias específicos</string>
+    <string name="event_frequency_week">Cada semana</string>
+    <string name="event_frequency_month">Cada mes</string>
+    <string name="event_frequency_year">Cada año</string>
+    <string name="event_warn_event_type">Selecciona un tipo de recordatorio</string>
+    <string name="event_warn_event_date">Selecciona la fecha de recordatorio</string>
+    <string name="event_warn_event_hour">Selecciona la hora de recordatorio</string>
+    <string name="event_warn_event_description">Indica la descripción del recordatorio</string>
+    <string name="event_warn_event_reiterative_type">¿Cada cuánto te recordamos?</string>
+    <string name="event_warn_event_day__multiple_check">Debe seleccionar por lo menos un día para el recordatorio</string>
+    <string name="event_warn_event_day__single_check">Debe seleccionar un día para el recordatorio</string>
+    <string name="event_info_state_active_update">El recordatorio se activó</string>
+    <string name="event_info_state_inactive_update">El recordatorio se inactivó</string>
+    <string name="event_my_list">Mis recordatorios</string>
+    <string name="title_activity_event_list">EventListActivity</string>
+
 </resources>

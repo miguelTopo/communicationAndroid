@@ -1,13 +1,13 @@
 package co.edu.udistrital.communicationapp;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import co.edu.udistrital.communicationapp.model.UserContact;
 import co.edu.udistrital.communicationapp.network.ImageRequester;
 
@@ -32,7 +32,7 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactView
         if (userContactList != null && position < userContactList.size()) {
             UserContact uc = userContactList.get(position);
             holder.name.setText(uc.customName);
-            imageRequester.setImageFromUrl(holder.photoUrl, uc.photoUrl);
+            imageRequester.setImageFromUrl(holder.photoUrl, "");
         }
     }
 

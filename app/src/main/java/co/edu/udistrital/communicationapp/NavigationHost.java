@@ -1,6 +1,6 @@
 package co.edu.udistrital.communicationapp;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 public interface NavigationHost {
     /**

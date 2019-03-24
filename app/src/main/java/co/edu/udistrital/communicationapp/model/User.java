@@ -1,11 +1,18 @@
 package co.edu.udistrital.communicationapp.model;
 
-import java.util.Date;
+import java.io.File;
 import java.util.List;
 
-import co.edu.udistrital.communicationapp.enums.State;
+import co.edu.udistrital.communicationapp.enums.Role;
 
-public class User {
+public class User extends AuditObject {
+
+    public User() {
+    }
+
+    public User(String id) {
+        this.id = id;
+    }
 
     public String id;
 
@@ -13,11 +20,21 @@ public class User {
 
     public String email;
 
+    public String photo;
+
+    public File file;
+
     public String mobilePhone;
 
-    public Date dateCreation;
+    public String countryCode;
 
-    public State state;
+    public String langPreferences;
 
-    public List<UserContact> userContacts;
+    public UserLangPreferences userLangPreferences;
+
+    public List<UserContact> userContactList;
+
+    public List<String> userContactIdList;
+
+    public List<Role> roleList;
 }

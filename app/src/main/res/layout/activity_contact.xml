@@ -1,75 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ContactActivity">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        style="@style/AppTheme.AppBarOverlay"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#66ff66"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/contact_photo"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="#fff524"
-            android:scaleType="center" />
-
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/contact_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="35dp">
-                <TextView
-                    android:id="@+id/contact_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:background="#FF4567"
-                    android:paddingLeft="7dp"
-                    android:text="Miguel Ángel Torres"
-                    android:textSize="20dp"
-                    android:textStyle="bold|italic" />
+    <include layout="@layout/contact_list"/>
 
-                <TextView
-                    android:id="@+id/last_message_hour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:paddingLeft="7dp"
-                    android:layout_alignParentRight="true"
-                    android:background="#FF4545"
-                    android:text="23:00"
-                    android:textSize="10dp" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/last_message"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="#ff6666"
-                android:text="Ultimo mensaje enviado"
-                android:textSize="17dp" />
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#ffffff" />
-    </LinearLayout>
-
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </android.support.v4.widget.NestedScrollView>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

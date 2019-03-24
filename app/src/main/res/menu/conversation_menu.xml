@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_conversation_text"
+        android:icon="@drawable/ic_textsms_white_24dp"
+        android:title="Texto"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_conversation_audio"
+        android:icon="@drawable/ic_mic_white_24dp"
+        app:showAsAction="always"
+        android:title="Audio"/>
+    <item
+        android:id="@+id/action_conversation_video"
+        android:icon="@drawable/ic_videocam_white_24dp"
+        android:title="Video"
+        app:showAsAction="always"
+        />
+</menu>

@@ -1,11 +1,12 @@
 package co.edu.udistrital.communicationapp;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ContactViewHolder extends RecyclerView.ViewHolder {
 

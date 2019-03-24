@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="empty_spinner"></string-array>
+    <string-array name="lang_pref_type_array">
+        <item>@string/core_customize</item>
+        <item>@string/lan_pref_original_resources</item>
+    </string-array>
+    <string-array name="event_type_array">
+        <item>@string/event_select_event_type</item>
+        <item>@string/core_specific_date</item>
+        <item>@string/core_repetitive</item>
+    </string-array>
+    <string-array name="event_reiterative_type_array">
+        <item>@string/event_warn_event_reiterative_type</item>
+        <item>@string/event_frequency_hour</item>
+        <item>@string/event_frequency_day</item>
+        <item>@string/event_frequency_specific_days</item>
+        <item>@string/event_frequency_week</item>
+        <item>@string/event_frequency_month</item>
+        <item>@string/event_frequency_year</item>
+    </string-array>
+</resources>

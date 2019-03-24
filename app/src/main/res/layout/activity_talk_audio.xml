@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TalkAudioActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/register_photo_user"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/ic_mic_white_150dp"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="2dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/talk_audio_record"
+            style="@style/Widget.MaterialComponents.Button.IconButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Grabar audio"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            app:icon="@drawable/ic_mic_white_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/talk_audio_stop"
+            style="@style/Widget.MaterialComponents.Button.IconButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detener grabación"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:visibility="gone"
+            app:icon="@drawable/ic_stop_white_24dp" />
+
+
+        <LinearLayout
+            android:id="@+id/talk_audio_action_layout"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/talk_audio_play"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Escuchar audio"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                app:icon="@drawable/ic_play_arrow_white_24dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/talk_audio_cancel"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:text="Cancelar envío"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/talk_audio_send"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_weight="1"
+                android:text="Enviar audio"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
