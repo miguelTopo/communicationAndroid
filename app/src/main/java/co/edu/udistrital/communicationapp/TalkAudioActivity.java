@@ -58,7 +58,7 @@ public class TalkAudioActivity extends AppCompatActivity {
 
     private void getFileName() {
         File directory = FileUtils.getPicturePrivateAlbum();
-        fileName = directory.getAbsolutePath() + "/" + FileUtils.getFileName(".3gp");
+        fileName = directory.getAbsolutePath() + "/" + FileUtils.getFileName(".mp3");
     }
 
     private void initComponents() {
@@ -149,9 +149,9 @@ public class TalkAudioActivity extends AppCompatActivity {
     private void startRecording() {
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mediaRecorder.setOutputFile(fileName);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         try {
             mediaRecorder.prepare();
         } catch (IOException e) {

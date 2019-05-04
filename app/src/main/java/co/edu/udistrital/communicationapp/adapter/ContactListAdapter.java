@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.LinkedList;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import co.edu.udistrital.communicationapp.R;
 import co.edu.udistrital.communicationapp.TalkActivity;
@@ -44,8 +45,12 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         UserContact userContact = contactList.get(position);
         holder.contactName.setText(userContact.customName == null || userContact.customName.trim().isEmpty() ? userContact.user.name : userContact.customName.trim());
-        holder.hourLastMessage.setText("10:00");
-        holder.lastMessage.setText("Mesg desde adapter");
+        holder.hourLastMessage.setText(userContact.lastMessageHour == null || userContact.lastMessageHour.trim().isEmpty() ? "--:--" : userContact.lastMessageHour);
+        holder.lastMessage.setText(userContact.lastMessage == null || userContact.lastMessage.trim().isEmpty() ? "Conversar con este contacto" : userContact.lastMessage);
+        if (userContact.lastMessage == null || userContact.lastMessage.trim().isEmpty()) {
+            holder.lastMessage.setBackgroundColor(ContextCompat.getColor(CommunicationApplication.getAppContext(), R.color.colorInfoBackground));
+            holder.lastMessage.setTextColor(ContextCompat.getColor(CommunicationApplication.getAppContext(), R.color.colorInfoText));
+        }
         String photo = userContact.user.photo == null || userContact.user.photo.trim().isEmpty() ? getPropertyByKey(PropertyKey.CORE_DEFAULT_USERPHOTO) : userContact.user.photo;
         Picasso.get().load(photo).into(holder.contactPhoto);
     }
@@ -86,7 +91,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
             int position = getLayoutPosition();
             UserContact contact = contactList.get(position);
             Intent intent = new Intent(CommunicationApplication.getAppContext(), TalkActivity.class);
-            intent.putExtra(FieldName.CONTACT_SELECTED, contact.user.id) ;
+            intent.putExtra(FieldName.CONTACT_SELECTED, contact.user.id);
             CommunicationApplication.getAppContext().startActivity(intent);
         }
 

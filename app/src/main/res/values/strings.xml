@@ -83,4 +83,6 @@
     <string name="event_my_list">Mis recordatorios</string>
     <string name="title_activity_event_list">EventListActivity</string>
 
+    <string name="message_success_send">El mensaje se envió exitosamente</string>
+
 </resources>

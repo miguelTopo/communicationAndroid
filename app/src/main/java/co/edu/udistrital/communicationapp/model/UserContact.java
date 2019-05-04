@@ -10,4 +10,8 @@ public class UserContact {
 
     public String customName;
 
+    public String lastMessageHour;
+
+    public String lastMessage;
+
 }

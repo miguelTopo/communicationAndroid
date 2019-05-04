@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.layoutName = findViewById(R.id.register_name_layout);
         this.registerUserLabel = findViewById(R.id.register_user_label);
         this.registerPhotoUpdateBtn = findViewById(R.id.register_photo_update_btn);
-        this.registerPhotoUser = findViewById(R.id.register_photo_user);
+        this.registerPhotoUser = findViewById(R.id.register_form_photo);
         this.progressBar = findViewById(R.id.register_progress_bar);
     }
 

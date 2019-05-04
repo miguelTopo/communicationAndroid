@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".TalkActivity">
 
     <LinearLayout
@@ -15,25 +16,32 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/talk_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="8">
 
+        <include layout="@layout/message_list" />
     </LinearLayout>
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/talk_menu"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorWhite"
-        app:itemTextColor="@color/colorWhite"
-        app:menu="@menu/conversation_menu" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/talk_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/colorWhite"
+            app:itemTextColor="@color/colorWhite"
+            app:menu="@menu/conversation_menu" />
+    </LinearLayout>
+
 
 </LinearLayout>

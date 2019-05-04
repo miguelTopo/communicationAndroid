@@ -15,7 +15,6 @@ public class JSONUtil {
         return new Gson().fromJson(jsonString, objectClass);
     }
 
-
     public static List<?> parseToList(String jsonString, Type type) {
         return new Gson().fromJson(jsonString, type);
     }

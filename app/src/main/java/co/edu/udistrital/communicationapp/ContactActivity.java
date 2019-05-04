@@ -44,7 +44,7 @@ public class ContactActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        Toolbar toolbar = findViewById(R.id.contact_toolbar);
+        Toolbar toolbar = findViewById(R.id.contact_list_toolbar);
         setSupportActionBar(toolbar);
         this.contactRecycleView = findViewById(R.id.contact_recycleview);
     }

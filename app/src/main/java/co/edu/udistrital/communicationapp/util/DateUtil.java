@@ -85,6 +85,14 @@ public class DateUtil {
         return getStringHour24H(calendar);
     }
 
+    public static String getStringHour24H(Date date) {
+        if (date == null)
+            return "";
+        Calendar calendar = getCurrentCalendar();
+        calendar.setTime(date);
+        return getStringHour24H(calendar);
+    }
+
     public static String getStringHour24H(Calendar calendar) {
         if (calendar == null)
             return "";

@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 import co.edu.udistrital.communicationapp.application.AppPreferences;
 import co.edu.udistrital.communicationapp.model.Message;
 import co.edu.udistrital.communicationapp.model.User;
@@ -29,6 +29,7 @@ public class TalkActivity extends AppCompatActivity {
     private BottomNavigationView talkMenu;
     private MessageService messageService;
     private String contactId;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -42,7 +43,7 @@ public class TalkActivity extends AppCompatActivity {
     private void loadConversation() {
         Intent intent = getIntent();
         this.contactId = intent.getStringExtra(FieldName.CONTACT_SELECTED);
-        Toast.makeText(this, "Llegamos a conversación con contacto =" + this.contactId, Toast.LENGTH_SHORT).show();
+        System.out.println("Llegamos a conversación con contacto =" + this.contactId);
         getMessageService().loadConversation(AppPreferences.getString(PreferenceKey.APP_USER_ID), this.contactId);
     }
 
@@ -88,6 +89,8 @@ public class TalkActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+        recyclerView = findViewById(R.id.message_recyclerview);
+
         talkMenu = findViewById(R.id.talk_menu);
         talkMenu.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -110,7 +113,6 @@ public class TalkActivity extends AppCompatActivity {
             message.senderUser = new User(AppPreferences.getString(PreferenceKey.APP_USER_ID));
             getMessageService().sendVideoMessage(video, new Message());
         }
-
     }
 
     @Override
@@ -123,7 +125,7 @@ public class TalkActivity extends AppCompatActivity {
     private MessageService getMessageService() {
         try {
             if (this.messageService == null)
-                this.messageService = new MessageService();
+                this.messageService = new MessageService(recyclerView);
             return this.messageService;
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,27 +4,37 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import java.util.LinkedList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import co.edu.udistrital.communicationapp.R;
+import co.edu.udistrital.communicationapp.application.ApplicationProperties;
 import co.edu.udistrital.communicationapp.model.Conversation;
-import de.hdodenhof.circleimageview.CircleImageView;
+import co.edu.udistrital.communicationapp.model.Message;
 
 public class MessageListAdapter extends RecyclerView.Adapter {
 
     private static final int SENT_MESSAGE_VIEW = 1;
     private static final int RECEIVED_MESSAGE_VIEW = 2;
 
+    private final LinkedList<Message> messageList;
+    private final String currentUserId;
+
+
     private LayoutInflater inflater;
+    private ApplicationProperties properties;
     private Context context;
     private Conversation conversation;
+
 
     public MessageListAdapter(Context context, Conversation conversation) {
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.conversation = conversation;
+        this.currentUserId = this.conversation.userList.get(0).id;
+        this.messageList = conversation.messageList;
     }
 
     @NonNull
@@ -33,77 +43,35 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         View view;
         if (viewType == SENT_MESSAGE_VIEW) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_sent, parent, false);
-            return new SentMessageHolder(view);
+            return new SentMessageHolder(view, conversation);
         } else {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_received, parent, false);
-            return new ReceivedMessageHolder(view);
+            return new ReceivedMessageHolder(view, conversation);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Message message = this.messageList.get(position);
         switch (holder.getItemViewType()) {
             case SENT_MESSAGE_VIEW:
-                ((SentMessageHolder) holder).bind();
+                ((SentMessageHolder) holder).bind(message);
                 break;
             case RECEIVED_MESSAGE_VIEW:
-                ((ReceivedMessageHolder) holder).bind();
+                ((ReceivedMessageHolder) holder).bind(message);
                 break;
             default:
                 break;
         }
     }
 
-    @Override
     public int getItemViewType(int position) {
-        //aqui validar  el tipo de mensaje partiendo de la definición de si es un mensaje de llegada o de salida
-        return SENT_MESSAGE_VIEW;
+        Message m = this.messageList.get(position);
+        return m.senderUserId.equals(this.currentUserId) ? SENT_MESSAGE_VIEW : RECEIVED_MESSAGE_VIEW;
     }
 
     @Override
     public int getItemCount() {
-        return  0 /*this.conversation.messageLinkedList.size()*/;
+        return messageList.size();
     }
-
-    private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
-
-        TextView messageText;
-        TextView timeText;
-        TextView nameText;
-        CircleImageView imageMessageProfile;
-
-        public ReceivedMessageHolder(@NonNull View itemView) {
-            super(itemView);
-            messageText = itemView.findViewById(R.id.text_message_body);
-            timeText = itemView.findViewById(R.id.text_message_time);
-            nameText = itemView.findViewById(R.id.text_mesage_name);
-            imageMessageProfile = itemView.findViewById(R.id.image_message_profile);
-        }
-
-        void bind() {
-            //En este método se pueden enviar datos que se van a renderizar
-            messageText.setText("Hola este mesaje es quemado desde receivedHolder");
-            timeText.setText("15:23");
-            nameText.setText("Nombre de persona");
-        }
-    }
-
-    private class SentMessageHolder extends RecyclerView.ViewHolder {
-
-        TextView messageText;
-        TextView timeText;
-
-        public SentMessageHolder(@NonNull View itemView) {
-            super(itemView);
-            messageText = itemView.findViewById(R.id.text_message_body);
-            timeText = itemView.findViewById(R.id.text_message_time);
-        }
-
-        void bind() {
-            //En este método se pueden enviar datos que se van a renderizar
-            messageText.setText("Hola este mesaje es quemado desde sendHolder");
-            timeText.setText("12:30");
-        }
-    }
-
 }
