@@ -38,17 +38,17 @@ public class MessageService {
         recyclerView = rv;
     }
 
-    public void sendTextMessage(final Message message) {
-        if (message == null || message.senderUser == null || message.receiverUser == null)
+    public void sendTextMessage(final Message message, final File file) {
+        if (message == null || message.senderUser == null || message.receiverUser == null || file ==null)
             return;
         AsyncTask<Message, Void, Message> task = new AsyncTask<Message, Void, Message>() {
             @Override
             protected Message doInBackground(Message... messages) {
-                String json = ApplicationService.executePost(MESSAGE_SEND_TEXT, JSONUtil.parseToJson(message));
+                /*String json = ApplicationService.executePost(MESSAGE_SEND_TEXT, JSONUtil.parseToJson(message));*/
+                String json = ApplicationService.executeMultipartTest(MESSAGE_SEND_TEXT, file, JSONUtil.parseToJson(message));
                 try {
                     JSONObject jsonObject = new JSONObject(json);
-                    boolean succes = jsonObject.getBoolean(FieldName.BOOLEAN_RESPONSE);
-                    return succes ? message : null;
+                    return jsonObject.getBoolean(FieldName.BOOLEAN_RESPONSE) ? message : null;
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;
@@ -80,8 +80,7 @@ public class MessageService {
                 String json = ApplicationService.executeMultipartTest(MESSAGE_SEND_AUDIO, file, JSONUtil.parseToJson(message));
                 try {
                     JSONObject jsonObject = new JSONObject(json);
-                    boolean succes = jsonObject.getBoolean(FieldName.BOOLEAN_RESPONSE);
-                    return succes ? message : null;
+                    return jsonObject.getBoolean(FieldName.BOOLEAN_RESPONSE) ? message : null;
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;

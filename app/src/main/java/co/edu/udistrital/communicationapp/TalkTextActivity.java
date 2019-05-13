@@ -2,10 +2,15 @@ package co.edu.udistrital.communicationapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.File;
+import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +20,7 @@ import co.edu.udistrital.communicationapp.model.Message;
 import co.edu.udistrital.communicationapp.model.User;
 import co.edu.udistrital.communicationapp.navigation.NavigateTo;
 import co.edu.udistrital.communicationapp.rest.MessageService;
+import co.edu.udistrital.communicationapp.util.FileUtils;
 import co.edu.udistrital.communicationapp.util.ToastMessage;
 import co.edu.udistrital.communicationapp.values.FieldName;
 import co.edu.udistrital.communicationapp.values.PreferenceKey;
@@ -26,8 +32,10 @@ public class TalkTextActivity extends AppCompatActivity {
     private MaterialButton saveButton;
     private MaterialButton cancelButton;
     private TextInputEditText message;
+    private TextToSpeech tts;
 
     private MessageService messageService;
+
     private String contactId;
 
     @Override
@@ -61,6 +69,17 @@ public class TalkTextActivity extends AppCompatActivity {
         });
         message = findViewById(R.id.talk_text_message);
 
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    Locale locale = new Locale("es", "CO");
+                    tts.setLanguage(locale);
+                }
+            }
+        });
+
+
     }
 
     private boolean validateSendMessage() {
@@ -79,13 +98,32 @@ public class TalkTextActivity extends AppCompatActivity {
         message.messageBody = this.message.getText().toString();
         message.receiverUser = new User(contactId);
         message.senderUser = new User(AppPreferences.getString(PreferenceKey.APP_USER_ID));
-        //message.parentMessageId = "Validar cuando tenga un parentMessageId";
-        getMessageService().sendTextMessage(message);
+        synthesizeToFileAndSendMessage(message);
 
-        /*Intent reply = new Intent();
-        reply.putExtra("key.test", reply);
-        setResult(RESULT_OK, reply);
-        finish();*/
+    }
+
+    private void synthesizeToFileAndSendMessage(Message message) {
+        File directory = FileUtils.getPicturePrivateAlbum();
+        String filePath = directory.getAbsolutePath() + "/" + FileUtils.getFileName(".mp3");
+        File f = new File(filePath);
+        String uttId = TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID;
+
+        tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {
+            }
+
+            @Override
+            public void onDone(String utteranceId) {
+                getMessageService().sendTextMessage(message, f);
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+                System.out.print("Ocurrió un error");
+            }
+        });
+        tts.synthesizeToFile(message.messageBody, null, f, uttId);
     }
 
     private MessageService getMessageService() {
